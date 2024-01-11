@@ -38,8 +38,8 @@ a{
   height: 100%;
 }
 .logo{
-  width: 10px;
-  height: 10px;
+  width: 30px;
+  height: 30px;
 }
 .nav-branding{
   font-size: 1.8rem;
@@ -47,6 +47,7 @@ a{
   display: flex;
   flex-direction: row;
   align-items: center;
+  justify-content: center;
 }
 .nav-link{
   font-size: 1.2rem;
@@ -84,6 +85,7 @@ a{
     left: 0;
     right: 0;
     bottom: 0;
+    background-color: white;
     box-shadow:2px 2px 6px 6px rgb(19, 1, 92);
   }
 
@@ -200,15 +202,17 @@ a{
   font-weight: light;
 }
 
+
 /* analysis page */
 
 .analysis{
-  font-size: 25px;
-  padding: 70px 30px 0px 30px;
+  font-size: 2vw;
+  padding: 70px 30px 30px 30px;
   display: flex;
   flex-direction: row;
-  justify-content: space-around;
+  justify-content: space-between;
   gap: 50px;
+
 }
 .form{
   display: flex;
@@ -216,23 +220,67 @@ a{
   align-items: start;
   gap: 20px;
 }
+h3{
+  color: blue;
+}
 form{
   display: flex;
   flex-direction: row;
+  justify-content: center;
   flex-wrap: wrap;
   gap: 30px;
 }
 form div{
   display: flex;
   flex-direction: column;
-  font-size: 16px;
+  font-size: 20px;
   font-weight: bold;
 }
+label{
+  font-size: 1.3vw;
+  color: rgb(1, 1, 59);
+}
 form div input{
-  height: 40px;
-  width: 450px;
+  height: 45px;
+  width: 30vw;
+  font-size: 20px;
+  padding: 0px 10px 0px 10px;
+}
+input{
+  background-color: rgb(212, 210, 210);
+  border-style: none;
+}
+input::placeholder{
+  padding: 15px;
+  font-size: 18px;
+}
+.ana-img{
+  width: 90%;
+}
+.ana-img img{
+  width: 20vw;
+  position: fixed;
 }
 
+@media(max-width:1300px){
+label{
+  font-size: 1.6vw;
+}
+form div input{
+  height: 45px;
+  width: 32vw;
+}
+input::placeholder{
+  padding: 15px;
+}
+.ana-img{
+  width: 90%;
+}
+.ana-img img{
+  width: 23vw;
+  position: fixed;
+}
+}
 
 @media (max-width:1122px){
   .st{
@@ -246,6 +294,26 @@ form div input{
   }
   .ind-img{
     margin-bottom: 30px;
+  }
+  .form h3{
+    font-size: 3.3vw;
+  }
+  label{
+    font-size: 1.7vw;
+  }
+  form div input{
+    height: 40px;
+    width: 34vw;
+  }
+  input::placeholder{
+    padding: 15px;
+  }
+  .ana-img{
+    width: 90%;
+  }
+  .ana-img img{
+    width: 22vw;
+    position: fixed;
   }
 }
 
@@ -268,7 +336,7 @@ form div input{
   .nav-menu{
     position: fixed;
     left: 100%;
-    top: 39px;
+    top: 28px;
     padding-top: 10px;
     gap: 0;
     flex-direction: column;
@@ -292,8 +360,8 @@ form div input{
     background-color: white;
   }
   .logo{
-    width: 40px;
-    height: 40px;
+    width: 20px;
+    height: 20px;
   }
   .nav-branding{
     font-size: 1.2rem;
@@ -305,6 +373,23 @@ form div input{
   .about{
     padding: 45px 30px 0px 30px;
   }
+  label{
+    font-size: 1.9vw;
+  }
+  form div input{
+    height: 40px;
+    width: 50vw;
+  }
+  input::placeholder{
+    padding: 15px;
+  }
+  .ana-img{
+    width: 90%;
+  }
+  .ana-img img{
+    width: 22vw;
+    position: fixed;
+  }
 }
 @media(max-width:700px){
   .ind-img img{
@@ -313,15 +398,57 @@ form div input{
   }
   .btn{
     padding: 8px 40px 8px 40px;
-    color: white;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background-color: blue;
-    border: none;
-    border-radius: 5px;
-    box-shadow: 0px 5px 5px rgba(0,0,0,0.5);
     font-size: 15px;
-    cursor: pointer;
+  }
+  .form h3{
+    font-size: 4.3vw;
+  }
+  label{
+    font-size: 3.3vw;
+  }
+  form div input{
+    height: 40px;
+    width: 70vw;
+  }
+  .form{
+    align-items: center;
+  }
+  input::placeholder{
+    padding: 15px;
+  }
+  .ana-img{
+    display: none;
   }
 }
-
+@media(max-width:400px){
+  label{
+    font-size: 3.7vw;
+  }
+  form div input{
+    height: 30px;
+    width: 80vw;
+  }
+}
+@media(max-width:370px){
+  .st{
+    font-size: 8.5vw;
+  }
+  .take{
+    font-size: 5.9vw;
+  }
+  .st2{
+    font-size: 11.5vw;
+  }
+  .ind-img{
+    margin-bottom: 30px;
+  }
+  .btn{
+    padding: 6px 36px 6px 36px;
+    font-size: 10px;
+  }
+  .ind-img img{
+    height: 100%;
+    width: 100%;
+  }
+}
 
