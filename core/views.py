@@ -8,3 +8,6 @@ def about(request):
 
 def analysis(request):
     return render(request, 'analysis.html')
+
+def login(request):
+    return render(request, 'login.html')

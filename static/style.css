@@ -223,14 +223,14 @@ a{
 h3{
   color: blue;
 }
-form{
+.form-a{
   display: flex;
   flex-direction: row;
   justify-content: center;
   flex-wrap: wrap;
   gap: 30px;
 }
-form div{
+.form-a div{
   display: flex;
   flex-direction: column;
   font-size: 20px;
@@ -240,7 +240,7 @@ label{
   font-size: 1.3vw;
   color: rgb(1, 1, 59);
 }
-form div input{
+.form-a div input{
   height: 45px;
   width: 30vw;
   font-size: 20px;
@@ -260,6 +260,79 @@ input::placeholder{
 .ana-img img{
   width: 20vw;
   position: fixed;
+}
+
+/*Login Page*/
+
+.login{
+  padding: 20px 5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 90vh;
+}
+.div-login{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+.login h2{
+  font-size: 40px;
+  color: blue;
+}
+.box{
+  border: 3px solid rgb(56, 136, 222);
+  border-radius: 10px;
+  box-shadow: rgba(0, 0, 0, 0.2);
+  min-width: 270px;
+  max-width: 550px;
+  width: 50vw;
+  padding: 15px;
+  box-shadow:6px 6px rgba(122, 120, 120, 0.2);
+}
+.input-group{
+  background: rgb(212, 210, 210);
+  margin: 15px;
+  border-radius: 3px;
+  padding: 5px 10px 10px 10px;
+}
+.input-field{
+  background: rgb(212, 210, 210);
+  border-radius: 3px;
+  display: flex;
+  align-items: center;
+  justify-content: start;
+  flex-direction: row;
+  gap: 10px;
+  height: 40px;
+  border-bottom: 2px solid black;
+  box-shadow:6px 6px 12px #0a0909;
+}
+.input-field svg{
+  margin-left: 15px;
+  fill: #999;
+}
+.input-field img{
+  margin-right: 15px;
+  fill: #999;
+}
+.input-field input{
+  width: 100%;
+  height: 100%;
+  text-decoration: none;
+  border: 0;
+  outline: 0;
+  padding-left: 10px;
+  font-size: 18px;
+}
+#open{
+  display: none;
+  cursor: pointer;
+}
+#close{
+  display: flex;
+  cursor: pointer;
 }
 
 @media(max-width:1300px){
