@@ -20,3 +20,6 @@ def result1(request):
 
 def result2(request):
     return render(request, 'result2.html')
+
+def contact(request):
+    return render(request, 'contact.html')
