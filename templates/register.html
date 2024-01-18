@@ -11,33 +11,34 @@ REGISTER
     <div class="div-login">
         <h2>REGISTER</h2>
         <div class="box">
-            <form action="POST">
+            <form method="POST" autocomplete="off"  enctype="multipart/form-data">
+                {% csrf_token %}
                 <div class="input-group">
                     <div class="input-field">
-                        <input type="text" placeholder="First Name" required>
+                        <input type="text" placeholder="First Name" required name="firstname">
                     </div>
                 </div>
                 <div class="input-group">
                     <div class="input-field">
-                        <input type="text" placeholder="Last Name" required>
+                        <input type="text" placeholder="Last Name" required name="lastname">
                     </div>
                 </div>
                 <div class="input-group">
                     <div class="input-field">
                         <svg xmlns="http://www.w3.org/2000/svg" height="16" width="16" viewBox="0 0 512 512"><!--!Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.--><path d="M48 64C21.5 64 0 85.5 0 112c0 15.1 7.1 29.3 19.2 38.4L236.8 313.6c11.4 8.5 27 8.5 38.4 0L492.8 150.4c12.1-9.1 19.2-23.3 19.2-38.4c0-26.5-21.5-48-48-48H48zM0 176V384c0 35.3 28.7 64 64 64H448c35.3 0 64-28.7 64-64V176L294.4 339.2c-22.8 17.1-54 17.1-76.8 0L0 176z"/></svg>
-                        <input type="email" placeholder="E-mail" required>
+                        <input type="email" placeholder="E-mail" required name="email">
                     </div>
                 </div>
                 <div class="input-group">
                     <div class="input-field">
                         <svg xmlns="http://www.w3.org/2000/svg" height="16" width="14" viewBox="0 0 448 512"><path d="M224 256A128 128 0 1 0 224 0a128 128 0 1 0 0 256zm-45.7 48C79.8 304 0 383.8 0 482.3C0 498.7 13.3 512 29.7 512H418.3c16.4 0 29.7-13.3 29.7-29.7C448 383.8 368.2 304 269.7 304H178.3z"/></svg>
-                        <input type="text" placeholder="Username" required>
+                        <input type="text" placeholder="Username" required name="username">
                     </div>
                 </div>
                 <div class="input-group">
                     <div class="input-field">
                         <svg xmlns="http://www.w3.org/2000/svg" height="16" width="14" viewBox="0 0 448 512"><!--!Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.--><path d="M144 144v48H304V144c0-44.2-35.8-80-80-80s-80 35.8-80 80zM80 192V144C80 64.5 144.5 0 224 0s144 64.5 144 144v48h16c35.3 0 64 28.7 64 64V448c0 35.3-28.7 64-64 64H64c-35.3 0-64-28.7-64-64V256c0-35.3 28.7-64 64-64H80z"/></svg>
-                        <input type="password" placeholder="Password" id="password" required>
+                        <input type="password" placeholder="Password" id="password" required name="password">
                         <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAACXBIWXMAAAsTAAALEwEAmpwYAAABoElEQVR4nO1Uu0pDQRBNYacYtVURFAz+hIi/olb5ghQx3xBIds/ZGwhJpwTShAiCIMYmhRYWaVQs0qpoRC2VwQmsN0seTbBwYeAy58yZuTM7m0j8nz99oihaApAm2QDQBfCp1lVfWjgTC+dyuRmSGZJvJL9GmHAyEjOWuHNuhWTbEzi11u4ZY1LVanVWTL7FJ5jHa0vsUPFSqbRG8l4D7gBsjypIOABuNeZeNILEQqEwB6AjRAAX5XJ5oY8Vi8VVADUAPTGSdfmLPk4yCeBcYzuiNZCAZEWruPYJxR/xp0DvnwXzC5RYxSq/xK21Owp8kNyItaCmWMNauyx9BtBU33GsyA3V+BJNH2hpwGGgxz3B/AFK5cp/DXQiq1grlCA7YYKXAD83kMBr0bsxZj1WUV2H15QkKn6iviOf65zblEUcaFFsyFdy1/t+Y0xKBhoY8qP/V/l8fp7kTXDIgWsqVy4Za8mx9FxMKvfFjTGLJC+HXtP4osnyjLNozrldkg8jF23YU0FyP4qiLalMTL6dcwcAziZ6Kqby2E3luf4/Uz3fOiUT1fn36X4AAAAASUVORK5CYII=" onclick="hidepassword()" id="open">
                         <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAYAAAAeP4ixAAAACXBIWXMAAAsTAAALEwEAmpwYAAAEBUlEQVR4nO1ZaWhdVRA+auK+1ii44QIiiLuioP5Q/KGgQSSp+sOFYlUQQdBfLnAVQUR44CPJme8794anQREeBEREaEUFRUlCq2ilVShtUay21gWtW40+mWYuXIJ5793kvkW5H+RH0jkz883cM2dm6lyJEiVKlCjRB6jVaoeSvBbAUySnSW4iuQfAbwDmSX4PYBvJdQCeJzlCcsj1C0TkGpIvAPiJZCPPjxFcLyJ3VavVQ3pCAMAwgLmMU3+T3EiyEkK4NYRwURzHqzRT9Xr9IO/9cSJyNskbATwB4E3NVub8VyQf6Rohc2ZdxoFvAETe+7Py6qrVaseSXAvgo0ymtipZ10mEEO4FsNcM7iH5oEa8CN0AbiD5SSZAIHm4KxIkBwFMZqL24tjY2PGFGnHORVE0AODhzCf3oYicUpgBkq9blDQbtxemeGl75wP43Gx+OTk5ecKKlepFJbmL5E4Al7kuIY7jVQDeIvm73stClOqlHB8fP9J1GY1G44Cpqakjum23RIn/OqIoGmgqoGUOwA6Sz7o+BYDbSO4TkdElhSYmJk5TIZJ/kbzS9RnihZK82x7L1U2FtekzQW3DB10fgWRivn2gpbmV8DH6mtqBJ12fIIRwvXXY+7z3F7d1CMB1+nnZwRHXY4jIGSS/teA+muswyaft4I8icq7rEarV6tEAPjZf1mvLlEtBFEUHknzVFHztvT/PdRm1hXllxnz4TH9flqJKpXKYNW4NS+0lrksgOWQTp9reniTJ6UXU7XQO+UVE7nEdhohcRfKLjN0rilgs/GrK0ujojPBSJzYg9Xr9YACPkfzT7PyRPgXe+xOXpVSXBwB+MEXeiI3qWsf+9rOW5wJH3WGb1xv2IFd1OsyMv1tInpRLqVaptNxp9PXip/+mSwYAb2TSvlNbGu/9OXmd1yjr5gTA5ky2PyV59SKZTbkzE0I401YzevC1pV53XcaRnF20p9Iy6UneGcfxpXpBdSDTrGl04zi+QERuJvkcyfcyn07Dery7/6285iaTJMnJmfS+3eqzIflQWp4BfJd3Qaf3z7aPSqTWzFYuMpkLPZskyVHNFCvJNHMhhJs0kiJyOcnHSb4M4P1MZlOyutCbBvCMdg+qwz7Vec1OCOHUdsmormZENN1z7ax6SD6QrmyaNXApkWa6ALxicpVWdpUMgA3aOLqC9lw7LBu3tJBtSURELtS+DsDeTuzLlgSA+9IKk61oyyVicvvXsPqOFOpsi2zsv6C6rG5Dvi0i1nE3dIemrVFhDjcxuMYit7lVNvIQMdkZk7/fdRrp4wXgjjady0NkddrprtjRNoy9o9Wt3bkgD5H6wnp2Vv+bwfUb8hBRtJzFewV7m97ttR8lSpRw/w/8A/Am/KMil075AAAAAElFTkSuQmCC" width="24px" onclick="showpassword()" id="close">
                     </div>

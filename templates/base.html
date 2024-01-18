@@ -35,6 +35,11 @@
             CONTACT
           </a>
         </li>
+        <li class="nav-item">
+          {% if user.is_authenticated %}
+            <a href="/logout"><button type="submit" class="btn-logout">LOGOUT →</button></a>
+          {% endif %}
+        </li>
       </ul>
       <div class="hamburger">
         <span class="bar"></span>
