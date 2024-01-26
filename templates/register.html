@@ -11,8 +11,22 @@ REGISTER
     <div class="div-login">
         <h2>REGISTER</h2>
         <div class="box">
-            <form method="POST" autocomplete="off"  enctype="multipart/form-data">
+            <form method="POST" autocomplete="off"  enctype="multipart/form-data" id="register-form">
                 {% csrf_token %}
+                {% if messages %}
+                    {{ message.tags }}
+                    {% for message in messages %}
+                    {% if message == 'Username Already Exists' %}
+                    <div class="alert alert-warning" role="alert">
+                        {{message}}
+                    </div>
+                    {% else %}
+            <div class="alert alert-warning" role="alert">
+              {{message}}
+            </div>
+                {% endif %}
+                {% endfor %}
+                {% endif %}
                 <div class="input-group">
                     <div class="input-field">
                         <input type="text" placeholder="First Name" required name="firstname">
@@ -26,13 +40,15 @@ REGISTER
                 <div class="input-group">
                     <div class="input-field">
                         <svg xmlns="http://www.w3.org/2000/svg" height="16" width="16" viewBox="0 0 512 512"><!--!Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.--><path d="M48 64C21.5 64 0 85.5 0 112c0 15.1 7.1 29.3 19.2 38.4L236.8 313.6c11.4 8.5 27 8.5 38.4 0L492.8 150.4c12.1-9.1 19.2-23.3 19.2-38.4c0-26.5-21.5-48-48-48H48zM0 176V384c0 35.3 28.7 64 64 64H448c35.3 0 64-28.7 64-64V176L294.4 339.2c-22.8 17.1-54 17.1-76.8 0L0 176z"/></svg>
-                        <input type="email" placeholder="E-mail" required name="email">
+                        <input type="email" placeholder="Example@host.com" required name="email" id="email">
+                        <div class="error"></div>
                     </div>
                 </div>
                 <div class="input-group">
                     <div class="input-field">
                         <svg xmlns="http://www.w3.org/2000/svg" height="16" width="14" viewBox="0 0 448 512"><path d="M224 256A128 128 0 1 0 224 0a128 128 0 1 0 0 256zm-45.7 48C79.8 304 0 383.8 0 482.3C0 498.7 13.3 512 29.7 512H418.3c16.4 0 29.7-13.3 29.7-29.7C448 383.8 368.2 304 269.7 304H178.3z"/></svg>
-                        <input type="text" placeholder="Username" required name="username">
+                        <input type="text" placeholder="Username_00" required name="username" id="username">
+                        <div class="error"></div>
                     </div>
                 </div>
                 <div class="input-group">
@@ -41,21 +57,14 @@ REGISTER
                         <input type="password" placeholder="Password" id="password" required name="password">
                         <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAACXBIWXMAAAsTAAALEwEAmpwYAAABoElEQVR4nO1Uu0pDQRBNYacYtVURFAz+hIi/olb5ghQx3xBIds/ZGwhJpwTShAiCIMYmhRYWaVQs0qpoRC2VwQmsN0seTbBwYeAy58yZuTM7m0j8nz99oihaApAm2QDQBfCp1lVfWjgTC+dyuRmSGZJvJL9GmHAyEjOWuHNuhWTbEzi11u4ZY1LVanVWTL7FJ5jHa0vsUPFSqbRG8l4D7gBsjypIOABuNeZeNILEQqEwB6AjRAAX5XJ5oY8Vi8VVADUAPTGSdfmLPk4yCeBcYzuiNZCAZEWruPYJxR/xp0DvnwXzC5RYxSq/xK21Owp8kNyItaCmWMNauyx9BtBU33GsyA3V+BJNH2hpwGGgxz3B/AFK5cp/DXQiq1grlCA7YYKXAD83kMBr0bsxZj1WUV2H15QkKn6iviOf65zblEUcaFFsyFdy1/t+Y0xKBhoY8qP/V/l8fp7kTXDIgWsqVy4Za8mx9FxMKvfFjTGLJC+HXtP4osnyjLNozrldkg8jF23YU0FyP4qiLalMTL6dcwcAziZ6Kqby2E3luf4/Uz3fOiUT1fn36X4AAAAASUVORK5CYII=" onclick="hidepassword()" id="open">
                         <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAYAAAAeP4ixAAAACXBIWXMAAAsTAAALEwEAmpwYAAAEBUlEQVR4nO1ZaWhdVRA+auK+1ii44QIiiLuioP5Q/KGgQSSp+sOFYlUQQdBfLnAVQUR44CPJme8794anQREeBEREaEUFRUlCq2ilVShtUay21gWtW40+mWYuXIJ5793kvkW5H+RH0jkz883cM2dm6lyJEiVKlCjRB6jVaoeSvBbAUySnSW4iuQfAbwDmSX4PYBvJdQCeJzlCcsj1C0TkGpIvAPiJZCPPjxFcLyJ3VavVQ3pCAMAwgLmMU3+T3EiyEkK4NYRwURzHqzRT9Xr9IO/9cSJyNskbATwB4E3NVub8VyQf6Rohc2ZdxoFvAETe+7Py6qrVaseSXAvgo0ymtipZ10mEEO4FsNcM7iH5oEa8CN0AbiD5SSZAIHm4KxIkBwFMZqL24tjY2PGFGnHORVE0AODhzCf3oYicUpgBkq9blDQbtxemeGl75wP43Gx+OTk5ecKKlepFJbmL5E4Al7kuIY7jVQDeIvm73stClOqlHB8fP9J1GY1G44Cpqakjum23RIn/OqIoGmgqoGUOwA6Sz7o+BYDbSO4TkdElhSYmJk5TIZJ/kbzS9RnihZK82x7L1U2FtekzQW3DB10fgWRivn2gpbmV8DH6mtqBJ12fIIRwvXXY+7z3F7d1CMB1+nnZwRHXY4jIGSS/teA+muswyaft4I8icq7rEarV6tEAPjZf1mvLlEtBFEUHknzVFHztvT/PdRm1hXllxnz4TH9flqJKpXKYNW4NS+0lrksgOWQTp9reniTJ6UXU7XQO+UVE7nEdhohcRfKLjN0rilgs/GrK0ujojPBSJzYg9Xr9YACPkfzT7PyRPgXe+xOXpVSXBwB+MEXeiI3qWsf+9rOW5wJH3WGb1xv2IFd1OsyMv1tInpRLqVaptNxp9PXip/+mSwYAb2TSvlNbGu/9OXmd1yjr5gTA5ky2PyV59SKZTbkzE0I401YzevC1pV53XcaRnF20p9Iy6UneGcfxpXpBdSDTrGl04zi+QERuJvkcyfcyn07Dery7/6285iaTJMnJmfS+3eqzIflQWp4BfJd3Qaf3z7aPSqTWzFYuMpkLPZskyVHNFCvJNHMhhJs0kiJyOcnHSb4M4P1MZlOyutCbBvCMdg+qwz7Vec1OCOHUdsmormZENN1z7ax6SD6QrmyaNXApkWa6ALxicpVWdpUMgA3aOLqC9lw7LBu3tJBtSURELtS+DsDeTuzLlgSA+9IKk61oyyVicvvXsPqOFOpsi2zsv6C6rG5Dvi0i1nE3dIemrVFhDjcxuMYit7lVNvIQMdkZk7/fdRrp4wXgjjady0NkddrprtjRNoy9o9Wt3bkgD5H6wnp2Vv+bwfUb8hBRtJzFewV7m97ttR8lSpRw/w/8A/Am/KMil075AAAAAElFTkSuQmCC" width="24px" onclick="showpassword()" id="close">
+                        <div class="error"></div>
                     </div>
                 </div>
                 <center style="display: flex; justify-content: space-between; align-items: center;" class="radio">
                     <label for="gender" style="font-size: 17px; color: #999;">Gender:</label>
-                    <span style="display: flex;"><input type="radio" name="gender" id="gender" value="male" style="min-width: 15px; width: 15px; box-shadow: inset 0px 0px 0px white;"> Male</span>
-                    <span style="display: flex;"><input type="radio" name="gender" id="gender" value="female" style="min-width: 15px; width: 15px; box-shadow: inset 0px 0px 0px white;"> Female</span>
-                    <span style="display: flex;"><input type="radio" name="gender" id="gender" value="other" style="min-width: 15px; width: 15px; box-shadow: inset 0px 0px 0px white;"> Other</span>
-                </center>
-                <center><h3 style="font-size: 20px; color: blue;">CONTINUE WITH GOOGLE</h3></center>
-                <center>
-                    <a href="#">
-                        <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="33" height="33" viewBox="0 0 48 48">
-                            <path fill="#FFC107" d="M43.611,20.083H42V20H24v8h11.303c-1.649,4.657-6.08,8-11.303,8c-6.627,0-12-5.373-12-12c0-6.627,5.373-12,12-12c3.059,0,5.842,1.154,7.961,3.039l5.657-5.657C34.046,6.053,29.268,4,24,4C12.955,4,4,12.955,4,24c0,11.045,8.955,20,20,20c11.045,0,20-8.955,20-20C44,22.659,43.862,21.35,43.611,20.083z"></path><path fill="#FF3D00" d="M6.306,14.691l6.571,4.819C14.655,15.108,18.961,12,24,12c3.059,0,5.842,1.154,7.961,3.039l5.657-5.657C34.046,6.053,29.268,4,24,4C16.318,4,9.656,8.337,6.306,14.691z"></path><path fill="#4CAF50" d="M24,44c5.166,0,9.86-1.977,13.409-5.192l-6.19-5.238C29.211,35.091,26.715,36,24,36c-5.202,0-9.619-3.317-11.283-7.946l-6.522,5.025C9.505,39.556,16.227,44,24,44z"></path><path fill="#1976D2" d="M43.611,20.083H42V20H24v8h11.303c-0.792,2.237-2.231,4.166-4.087,5.571c0.001-0.001,0.002-0.001,0.003-0.002l6.19,5.238C36.971,39.205,44,34,44,24C44,22.659,43.862,21.35,43.611,20.083z"></path>
-                            </svg>
-                    </a>
+                    <span style="display: flex;"><input type="radio" name="gender" id="gender" value="Male" style="min-width: 15px; width: 15px; box-shadow: inset 0px 0px 0px white;"> Male</span>
+                    <span style="display: flex;"><input type="radio" name="gender" id="gender" value="Female" style="min-width: 15px; width: 15px; box-shadow: inset 0px 0px 0px white;"> Female</span>
+                    <span style="display: flex;"><input type="radio" name="gender" id="gender" value="Others" style="min-width: 15px; width: 15px; box-shadow: inset 0px 0px 0px white;"> Other</span>
                 </center>
                 <br>
                 <center>

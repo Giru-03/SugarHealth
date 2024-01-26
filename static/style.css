@@ -157,7 +157,7 @@ a{
   border: none;
   border-radius: 5px;
   box-shadow: 0px 5px 5px rgba(0,0,0,0.5);
-  font-size: 12px;
+  font-size: 11px;
   cursor: pointer;
 }
 
@@ -474,7 +474,7 @@ input::placeholder{
   }
   .nav-menu.active{
     justify-content: initial;
-    transform: translateX(-120px);
+    transform: translateX(-140px);
     width: fit-content;
     height: 100rem;
     background-color: white;

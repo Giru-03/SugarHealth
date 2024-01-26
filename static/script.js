@@ -21,3 +21,4 @@ function hidepassword(){
   document.getElementById('close').style.display = "flex";
   document.getElementById('open').style.display = "none";
 }
+
