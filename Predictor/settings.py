@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-nw#0!(-6zwfzmea*30xw&&!9-u+#518vd+r%=*mz(-f9sh&g(v
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['sugarhealth.vercel.app']
+ALLOWED_HOSTS = ['sugarhealth.vercel.app','localhost']
 
 
 # Application definition
@@ -87,7 +87,6 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
         'NAME': BASE_DIR / 'db.sqlite3',
-        'GENDER':'',
     }
 }
 
