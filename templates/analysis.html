@@ -12,38 +12,39 @@ ANALYSIS
     </div>
     <div class="form">
         <h3>FILL IN THE DETAILS BELOW FOR ANALYSIS</h3>
-        <form class="form-a">
+        <form class="form-a" action="/predict" method="post">
+            {% csrf_token %}
             <div>
                 <label for="pregnancies">PREGNANCIES</label>
-                <input type="text" id='pregnancies' placeholder="Enter the value">
+                <input type="number" id='pregnancies' name='pregnancies' placeholder="Enter the value">
             </div>
             <div>
                 <label for="glucose">GLUCOSE LEVEL</label>
-                <input type="text" id='glucose' placeholder="Enter the value">
+                <input type="number" id='glucose' name='glucose' placeholder="Enter the value">
             </div>
             <div>
                 <label for="blood">BLOOD PRESSURE</label>
-                <input type="text" id='blood' placeholder="Enter the value">
+                <input type="number" id='blood' name='blood' placeholder="Enter the value">
             </div>
             <div>
                 <label for="skin">SKIN THICKNESS</label>
-                <input type="text" id='skin' placeholder="Enter the value">
+                <input type="number" id='skin' name="skin" placeholder="Enter the value">
             </div>
             <div>
                 <label for="insulin">INSULIN LEVEL</label>
-                <input type="text" id='insulin' placeholder="Enter the value">
+                <input type="number" id='insulin' name="insulin" placeholder="Enter the value">
             </div>
             <div>
                 <label for="bmi">BODY MASS INDEX (BMI)</label>
-                <input type="text" id='bmi' placeholder="Enter the value">
+                <input type="number" id='bmi' name="bmi" placeholder="Enter the value" step=".01">
             </div>
             <div>
                 <label for="dia">DIABETES PEDIGREE FUNCTION</label>
-                <input type="text" id='dia' placeholder="Enter the value">
+                <input type="number" id='dia' name="dia" placeholder="Enter the value" step=".001">
             </div>
             <div>
                 <label for="age">AGE</label>
-                <input type="text" id='age' placeholder="Enter the value">
+                <input type="number" id='age' name="age" placeholder="Enter the value">
             </div>
             <div style="align-items: center; width: 60vw;"><a href="#"><button type="submit" class="btn">PREDICT →</button></a></div>
         </form>

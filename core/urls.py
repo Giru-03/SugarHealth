@@ -15,4 +15,5 @@ urlpatterns = [
     path("result2", views.result2, name='result2'),
     path("home", views.index, name='home'),
     path("contact", views.contact, name='contact'),
+    path("predict", views.predict, name='predict'),
 ]
