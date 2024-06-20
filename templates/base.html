@@ -15,6 +15,13 @@
         <img src="../static/logo.png" alt="logo" class="logo"><h3>SugarHealth</h3>
       </a>
       <ul class="nav-menu">
+        {% if user.is_authenticated %}
+          <li class="nav-item">
+            <a>
+              {{name}}<img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAACXBIWXMAAAsTAAALEwEAmpwYAAABm0lEQVR4nM2UvUoDQRCAD7ITa81bGANaR5/A1lgIuZlEsPMFxCIIlkqOBCWFdjYzMaWNP+/gf6+dimhiIySc7GUNSXG5zSWIAwMHt/t9zOzOOk5EAHEGiD1FfAckXzqDb5QyFE/nnNixeTYFKAeA0gESPyTbQFx1cpwcHU58NQQ8mCiXI0mA+NAaTj1JxRaeiWiLH9ouV9I2Ai8G3O9WwfuRAoVyH1egkG+jK0BpjVFB00LAzdgCks9/0aJydwO/KRK2Sb3W+pD1+AdXDqWjCrwYWTHJkrnW7WSBZyMFgYS4aobnRWE9GwrHehZQXk3FnmMdOU4C8YXp7bdCPgpE6zzj5BspXZlCOdb/TGvOnY0a2At+JSiV7oM29LHzRof3BbiS1oenb0gwIygt871n3fO/jxwnEsjLgLwLyPNhyyAvC3qNXqv3WLHBlVWF/DwwQMTXQFIDlFKQJDWFcjM4ZPKULPDKcDjxzhjPhG+udikELsWx4WTSZXeQnm+kAOVjYgKSd2ftZLrHV8TbE4Sbc5OtPoE8TF7Ajxr+A4ujhM1OWAAmAAAAAElFTkSuQmCC">
+            </a>
+          </li>
+        {% endif %}
         <li class="nav-item">
           <a href="/" class="nav-link">
             HOME

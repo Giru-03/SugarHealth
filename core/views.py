@@ -41,7 +41,7 @@ def login_page(request):
         
         else:
             login(request,user)        
-            return redirect('/analysis')
+            return redirect('/analysis',name='username')
         
     return render(request, 'login.html')
 
